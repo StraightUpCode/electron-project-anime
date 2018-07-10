@@ -1,0 +1,32 @@
+{
+  "name": "proyectoanimelist",
+  "version": "1.0.0",
+  "description": "App para no tener que entrar a Ani list cada ves que quiera hacer una cambio en mi lista de anime xd",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "webpack",
+    "lol": "npm run build && npm run start"
+  },
+  "author": "Roberto Sanchez Saravia",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^2.0.2",
+    "electron-oauth-helper": "^2.0.3",
+    "preact": "^8.2.9",
+    "preact-router": "^2.6.1",
+    "unistore": "^3.0.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.2",
+    "webpack-cli": "^3.0.8"
+  }
+}
