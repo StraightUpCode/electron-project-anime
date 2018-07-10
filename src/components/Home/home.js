@@ -39,9 +39,6 @@ class Home extends Component{
     }
 
     render(props,state){
-        if(typeof state.stats.watchedTime == 'undefined'){
-            console.log("Cargando ...")
-        }
         return(
         <div class="main">
         <h1>Home</h1>
@@ -49,7 +46,7 @@ class Home extends Component{
             (
                 <div>
                     <p>Bienvenido {state.name}</p>
-                    <p>Tiempo desperdiciado en anime </p>
+                    <p>Tiempo desperdiciado {state.stats.watchedTime}</p>
                 </div>
             ):
             <p>There is no auth token</p>
