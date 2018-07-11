@@ -46,7 +46,7 @@ class Home extends Component{
             (
                 <div>
                     <p>Bienvenido {state.name}</p>
-                    <p>Tiempo desperdiciado {state.stats.watchedTime}</p>
+                    <p>Tiempo desperdiciado {state.stats && state.stats.watchedTime/60}</p>
                 </div>
             ):
             <p>There is no auth token</p>
