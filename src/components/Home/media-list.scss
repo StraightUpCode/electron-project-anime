@@ -8,9 +8,14 @@
     justify-content: center;
     .media-img{
         border-radius: 15px;
-        max-height: 320px;
-        max-width: 225px;
-        overflow: hidden
+        height: 320px;
+        width: 225px;
+        overflow: hidden;
+        
+    }
+    .medium{
+        height: 180px;
+        width: 90px;
     }
     .media-title{
         display:none;
@@ -18,6 +23,7 @@
         color: white;
         justify-content: center;
         align-items: center;
+        text-align: center;
         height: 10%;
         border-radius:  0 0 15px 15px;
     }

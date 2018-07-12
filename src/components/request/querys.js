@@ -14,7 +14,7 @@ query{
               romaji
             },
             coverImage{
-              large
+              medium
             }
           }
           
