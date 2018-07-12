@@ -12,6 +12,9 @@ query{
           nodes{
             title{
               romaji
+            },
+            coverImage{
+              large
             }
           }
           

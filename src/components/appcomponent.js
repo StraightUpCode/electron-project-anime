@@ -42,12 +42,13 @@ class App extends Component{
     componentWillMount(){
         console.log(this.props)
     }
-    handleClick(fn){
+    handleClick(){
         console.log('click')
         this.props.increment()
     }
 
-    render(){
+
+    render(props){
         return (
             <div>
                 <h1>Hola desde Preact</h1>
@@ -56,19 +57,21 @@ class App extends Component{
             <Link href="/home">home</Link>
             <br/>
             <Match path="/">
-      { ({ matches, path, url }) => (
-        <pre>{url}</pre>
-      ) }
-    </Match>
-    <br/>
+            { ({ matches, path, url }) => (
+                <pre>{url}</pre>
+            ) }
+            </Match>
+            <br/>
+            {Object.keys(props.token).length > 0 ?
             <Router>
-                <Login default/>
-                <Home path="/home"/>
+                <Home default path="/home"/>
+                <Login path="/login"/>
             </Router>
+           : <Login/>}
             </div>
             
         )
     }
 }
 
-export default connect('count',actions)(App)
+export default connect('token',actions)(App)

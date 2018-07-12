@@ -3,6 +3,7 @@ import './style.scss'
 import { connect } from 'unistore/preact';
 import { actions } from '../store/store';
 import { ViewerQuery } from '../request/querys'
+import Favourites from './list-media-elements'
 
     
 class Home extends Component{
@@ -19,6 +20,8 @@ class Home extends Component{
     }
     handleData(data) {
         this.setState(data.data.Viewer)
+        this.props.setId(this.state.id)
+        
     }
     componentWillMount(){
         let options = {
@@ -37,7 +40,6 @@ class Home extends Component{
             .then(this.handleData)
             .catch((err)=>console.log(err))
     }
-
     render(props,state){
         return(
         <div class="main">
@@ -46,7 +48,8 @@ class Home extends Component{
             (
                 <div>
                     <p>Bienvenido {state.name}</p>
-                    <p>Tiempo desperdiciado {state.stats && state.stats.watchedTime/60}</p>
+                    <p>Tiempo desperdiciado {state.stats && state.stats.watchedTime }</p>
+                        <Favourites favourites={state.favourites && state.favourites.anime && state.favourites.anime.nodes}/>
                 </div>
             ):
             <p>There is no auth token</p>
