@@ -19,6 +19,16 @@ query{
           }
           
         }
+        manga(page: 1, perPage:4){
+          nodes{
+            title{
+              romaji
+            },
+            coverImage{
+              medium
+            }
+          }
+        }
       }
     }
   }

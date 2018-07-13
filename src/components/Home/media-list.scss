@@ -1,21 +1,24 @@
-
+.list-container{
+    width: 285px;
+}
 .list-element {
     position: relative;
     list-style: none;
     margin: 5px;
     display: inline-flex;
-    align-items: flex-end;
-    justify-content: center;
+    align-items: stretch;
     .media-img{
-        border-radius: 15px;
+        z-index: inherit;
+        border-radius: 5px;
         height: 320px;
         width: 225px;
+        position: relative;
         overflow: hidden;
         
     }
     .medium{
-        height: 180px;
-        width: 90px;
+        height: 115px;
+        width: 85px;
     }
     .media-title{
         display:none;
@@ -24,13 +27,20 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        height: 10%;
-        border-radius:  0 0 15px 15px;
+        border-radius:  0 5px 0 5px;
+        
     }
-    &:hover .media-title{
-        width:100%;
+    .media-img:hover + .media-title  .media-title-2{
+        left:85px;
+        height: 100%;
+        z-index: 2;
         display:inherit;
-        position: absolute; 
+        position: absolute;   
+    }
+ /*   &:hover .media-title{
+
+*/    &:hover .media-img{
+        border-radius: 5px 0 0 5px;
     }
    
 }

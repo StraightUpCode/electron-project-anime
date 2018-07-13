@@ -49,7 +49,10 @@ class Home extends Component{
                 <div>
                     <p>Bienvenido {state.name}</p>
                     <p>Tiempo desperdiciado {state.stats && state.stats.watchedTime }</p>
-                        <Favourites favourites={state.favourites && state.favourites.anime && state.favourites.anime.nodes}/>
+                        <Favourites title="Anime" favourites={state.favourites && state.favourites.anime && state.favourites.anime.nodes}/>
+                        <br/>
+                        <Favourites title="Manga" favourites={state.favourites && state.favourites.manga && state.favourites.manga.nodes}/>
+
                 </div>
             ):
             <p>There is no auth token</p>

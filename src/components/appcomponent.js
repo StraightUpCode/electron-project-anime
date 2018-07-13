@@ -6,6 +6,8 @@ import { Router, route } from 'preact-router'
 import { Match , Link} from 'preact-router/match'
 import './style.scss'
 import Login from './Login/login'
+import Header from './Header/Navbar'
+import Lists from './List/List'
 import { actions } from './store/store';
 /*
 const tokenRequest = () => {
@@ -51,10 +53,9 @@ class App extends Component{
     render(props){
         return (
             <div>
-                <h1>Hola desde Preact</h1>
+            <h1>Hola desde Preact</h1>
             <span onClick={this.handleClick}>{this.props.count}</span>
             <br/>
-            <Link href="/home">home</Link>
             <br/>
             <Match path="/">
             { ({ matches, path, url }) => (
@@ -63,10 +64,14 @@ class App extends Component{
             </Match>
             <br/>
             {Object.keys(props.token).length > 0 ?
+            (<div>
+            <Header/>
             <Router>
-                <Home default path="/home"/>
-                <Login path="/login"/>
+                <Home default path="/"/>
+                <Lists path="/list"/>
             </Router>
+            </div>
+            )
            : <Login/>}
             </div>
             

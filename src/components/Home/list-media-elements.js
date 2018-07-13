@@ -8,9 +8,12 @@ export default (props)=>{
         <div class="media-title"><span>{data.title.romaji}</span></div>
     </li>)
      )
-    return (
-        <ul>
-           {listItems}
-        </ul>
-    )
+    return media.length ? (
+        <div>
+            <h1>{props.title}</h1>
+            <ul class="list-container">
+            {listItems}
+            </ul>
+        </div>
+    ) :  null
 }

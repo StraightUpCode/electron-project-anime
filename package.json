@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
-    "build": "webpack",
+    "build": "webpack ",
     "lol": "npm run build && npm run start"
   },
   "author": "Roberto Sanchez Saravia",
