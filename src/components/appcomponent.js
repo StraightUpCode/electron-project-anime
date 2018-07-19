@@ -1,48 +1,21 @@
 import { h, Component } from 'preact'
-import MyComponent from './Component2/component2'
 import Home from './Home/home'
 import {connect} from 'unistore/preact'
 import { Router, route } from 'preact-router'
-import { Match , Link} from 'preact-router/match'
+import { Match } from 'preact-router/match'
 import './style.scss'
 import Login from './Login/login'
 import Header from './Header/Navbar'
 import Lists from './List/List'
 import { actions } from './store/store';
-/*
-const tokenRequest = () => {
-    requestToken()
-    console.log(localStorage.getItem('token'))
+import Redirect from './redirect'
 
-}
-
-const Main = connect(['count'])(({count})=> (
-    (
-        <div>
-        <Link activeClassName="active" href="/component">Mi Componente</Link>
-        <br/>
-        <Link activeClassName="active" href="/">Home</Link>
-      
-       <a href="https://anilist.co/api/v2/oauth/authorize?client_id=717&response_type=token">Login ?</a>
-       
-        <div onClick={tokenRequest}>Sign in with Anilist</div> 
-        <span >{count}</span>
-
-        <Router>
-            <Home default path="/"/>
-            <MyComponent path="/component" />
-        </Router>
-        </div>
-    )
-
-))*/
 class App extends Component{
     constructor(){
         super()
         this.handleClick = this.handleClick.bind(this)
     }
     componentWillMount(){
-        console.log(this.props)
     }
     handleClick(){
         console.log('click')
@@ -63,13 +36,14 @@ class App extends Component{
             ) }
             </Match>
             <br/>
-            {Object.keys(props.token).length > 0 ?
+            {
+                Object.keys(props.token).length > 0 ?
             (<div>
-            <Header/>
-            <Router>
-                <Home default path="/"/>
-                <Lists path="/list"/>
-            </Router>
+                <Header/>
+                <Router>
+                    <Home  default path="/"/>
+                    <Lists path="/list"/>
+                </Router>
             </div>
             )
            : <Login/>}

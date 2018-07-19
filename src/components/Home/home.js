@@ -1,5 +1,6 @@
 import {h, Component } from 'preact'
 import './style.scss'
+import {route} from 'preact-router'
 import { connect } from 'unistore/preact';
 import { actions } from '../store/store';
 import { ViewerQuery } from '../request/querys'
@@ -12,14 +13,31 @@ class Home extends Component{
         let state= {}
         this.handleData = this.handleData.bind(this)
         this.handleResponse
+        this.dataTransform
     }
     handleResponse(response) {
         return response.json().then(function (json) {
             return response.ok ? json : Promise.reject(json);
         });
     }
+    dataTransform(id,name,stats,anime,manga){
+        return {
+        id: id,
+        name: name,
+        stats: stats.watchedTime,
+        Anime: anime.map((obj)=>({title: obj.title.romaji,
+                                  coverImg: obj.coverImage.medium})),
+        Manga: manga.map((obj)=>({title: obj.title.romaji,
+                                  coverImg: obj.coverImage.medium}))
+        }
+    }
     handleData(data) {
-        this.setState(data.data.Viewer)
+        
+        this.setState(this.dataTransform( data.data.Viewer.id,
+                                          data.data.Viewer.name,
+                                          data.data.Viewer.stats,
+                                          data.data.Viewer.favourites.anime.nodes,
+                                          data.data.Viewer.favourites.manga.nodes ))
         this.props.setId(this.state.id)
         
     }
@@ -40,24 +58,19 @@ class Home extends Component{
             .then(this.handleData)
             .catch((err)=>console.log(err))
     }
-    render(props,state){
+
+    render(state){
         return(
         <div class="main">
         <h1>Home</h1>
-        {Object.keys(props.token).length >0 ?
-            (
-                <div>
-                    <p>Bienvenido {state.name}</p>
-                    <p>Tiempo desperdiciado {state.stats && state.stats.watchedTime }</p>
-                        <Favourites title="Anime" favourites={state.favourites && state.favourites.anime && state.favourites.anime.nodes}/>
-                        <br/>
-                        <Favourites title="Manga" favourites={state.favourites && state.favourites.manga && state.favourites.manga.nodes}/>
+        <div>
+            <p>Bienvenido {state.name}</p>
+            <p>Tiempo desperdiciado {`${((state.stats/60)/24).toPrecision(3) || ''} dias` }</p>
+                <Favourites title="Anime" favourites={state.Anime}/>
+                <br/>
+                <Favourites title="Manga" favourites={state.Manga}/>
 
-                </div>
-            ):
-            <p>There is no auth token</p>
-        }
-        <div onClick={props.increment}>Increment</div>
+        </div>
         </div>
         )
     }

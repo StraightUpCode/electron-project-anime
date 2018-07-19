@@ -3,10 +3,10 @@ import { Link } from '../../../node_modules/preact-router/match';
 
 export default () => (
     <navbar>
-        <Link activeClassName="active" href="/">Home</Link>
-        <Link activeClassName="active" href="/list">List</Link>
-        <Link activeClassName="active" href="/">Home</Link>
-        <Link activeClassName="active" href="/">Home</Link>
+        <ul>
+            <li><Link activeClassName="active" href="/">Home</Link></li>
+            <li><Link activeClassName="active" href="/list">List</Link></li>
+        </ul>
     </navbar>
     
 )

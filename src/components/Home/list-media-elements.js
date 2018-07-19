@@ -2,11 +2,16 @@ import { h } from 'preact'
 import './media-list.scss'
 export default (props)=>{
     let media = props.favourites ||[]
-    let listItems = media.map((data) => (
-    <li class="list-element">
-        <img class={data.coverImage.large ?"media-img" : "media-img medium"} src={data.coverImage.large || data.coverImage.medium}/>
-        <div class="media-title"><span>{data.title.romaji}</span></div>
-    </li>)
+    let cont = 0
+    let listItems = media.map((data) => {
+        cont++
+        let el = (<li class={cont>2 ?"list-element-left" :"list-element"}>
+                    <img class="media-img medium" src={data.coverImg}/>
+                    <div class={"media-title"}><span>{data.title}</span></div>
+                    </li>)
+        cont = cont == 4? 0: cont
+        return el
+    }
      )
     return media.length ? (
         <div>

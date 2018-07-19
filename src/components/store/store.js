@@ -12,11 +12,11 @@ const getInitialState = () => {
                 token: {
                     access_token: localStorage.getItem("access_token"),
                     exp_date : expDate
-                }
+                },
             })
         }
     }
-    return ({token:{}})
+    return ({id:'',token:{},data:{}})
 }
 export let store = createStore(getInitialState())
 
@@ -27,6 +27,6 @@ export let actions = store =>({
         localStorage.setItem("exp_date", object.exp_date)
        return {token: object}
     },
-    setId: (state, newId)=>({id: newId})
+    setId: (state, newId)=>({id: newId}),
 })
 
